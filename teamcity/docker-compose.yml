@@ -1,0 +1,12 @@
+version: '3'                                                                                                                          
+services:
+  teamcity:
+    image: jetbrains/teamcity-server
+    volumes:
+      -  /app/teamcity-server/datadir:/data/teamcity_server/datadir
+      -  /app/teamcity-server/logs:/opt/teamcity/logs
+    container_name: teamcity-server-instance
+    ports:
+      - "8211:8111"
+    links:
+      - "postgresql:postgresql"
