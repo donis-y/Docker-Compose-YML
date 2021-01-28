@@ -2,7 +2,14 @@ version: '3'
 services:
   postgres:
     image: postgres:10.13
-    command: postgres -c 'max_connections=200'
+    command: 
+      - "postgres"
+      - "-c"
+      - "max_connections=200"
+      - "-c"
+      - "shared_buffers=4GB"
+      - "-c"
+      - "wal_buffers=128MB"
     volumes:
       - /app/postgresql/data:/var/lib/postgresql/data
     environment:
